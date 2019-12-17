@@ -1,0 +1,68 @@
+{
+  "id": "",
+  "$template": {
+    "name": "GOVTECH_DEMO",
+    "type": "EMBEDDED_RENDERER",
+    "url": "https://certificate-renderer.now.sh"
+  },
+  "name": "Blockchain Learning Group's Impact Series",
+  "issuedOn": "2019-09-30T23:59:32+08:00",
+  "issuers": [
+    {
+      "name": "Blockchain Learning Group Inc.",
+      "url": "https://convergence.tech",
+      "certificateStore": "0x733a6F54869De9dCEA8CEEb4650BDa651E285e94",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "convergence.tech"
+      }
+    }
+  ],
+  "recipient": {
+    "name": "",
+    "email": ""
+  },
+  "transcript": [
+    {
+      "name": "Problem Statements and Blockchain Concepts",
+      "grade": "PASS",
+      "courseCode": "impact-series-001"
+    },
+    {
+      "name": "Blockchain Fundamentals",
+      "grade": "PASS",
+      "courseCode": "impact-series-002"
+    },
+    {
+      "name": "A Look Under the Hood",
+      "grade": "PASS",
+      "courseCode": "impact-series-003"
+    },
+    {
+      "name": "Ethereum and Solidity",
+      "grade": "PASS",
+      "courseCode": "impact-series-004"
+    },
+    {
+      "name": "Use Cases and Blockchain Applications",
+      "grade": "PASS",
+      "courseCode": "impact-series-005"
+    },
+    {
+      "name": "Blockchain Application Fundamentals",
+      "grade": "PASS",
+      "courseCode": "impact-series-006"
+    },
+    {
+      "name": "Wiring Up a Blockchain Application",
+      "grade": "PASS",
+      "courseCode": "impact-series-007"
+    },
+    {
+      "name": "Impact Project",
+      "grade": "PASS",
+      "courseCode": "impact-series-008"
+    }
+  ],
+  "additionalData": {}
+}

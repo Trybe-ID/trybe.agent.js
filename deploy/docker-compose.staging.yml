@@ -1,0 +1,36 @@
+version: '3'
+services:
+  api:
+    image: blockchainlg/trybe-micro-credentials-api:staging
+    ports:
+      - "3002:3002"
+    environment:
+      SERVER_PORT: 3002
+      THREADS: 4
+      HTTPS: 'true'
+      DOMAIN: 'trybe.staging.convergence.tech'
+      DB_URL: 'mongodb://api-service:Ua0fTru6rKm9eYx@169.48.26.234:27017/trybe-db-staging'
+      SEND_EMAIL: 'true'
+      ROPSTEN_ETH_TX: 'true'
+      DEPLOYED_ENV: 'staging'
+    networks:
+      staging_net:
+        ipv4_address: 172.28.1.2
+        
+  db: 
+    image: mongo:4
+    ports:
+      - "27017:27017"
+    volumes:
+      - /usr/trybe/data:/data/db
+    command: mongod --auth
+    networks:
+        staging_net:
+          ipv4_address: 172.28.1.3
+
+networks:
+  staging_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16

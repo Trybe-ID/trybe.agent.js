@@ -1,0 +1,40 @@
+language: node_js
+node_js:
+  - 10.13
+
+# safelist
+branches:
+  only:
+  - master
+  - staging
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get -y install software-properties-common
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68DB5E88
+  - sudo add-apt-repository "deb https://repo.sovrin.org/sdk/deb xenial stable"
+  - sudo apt-get update
+  - sudo apt-get install -y libindy
+
+jobs:
+  include:
+    - stage: test
+      script: npm test
+    
+    - stage: build and push image
+      script: ./travis.ci/build-and-push-docker.sh
+
+      # Alter compose file and ip based on branch
+    - stage: deploy master
+      if: branch = master
+      env: COMPOSE_FILE=docker-compose.prod.yml SERVER_IP=169.48.12.7
+      script:
+        - ./travis.ci/deploy-to-remote-box.sh
+
+    - stage: deploy staging
+      if: branch = staging
+      env: COMPOSE_FILE=docker-compose.staging.yml SERVER_IP=169.48.12.18
+      script:
+        - ./travis.ci/deploy-to-remote-box.sh
